@@ -38,7 +38,7 @@ NSString *greeting = @"Welcome to The Flatiron School!";
 NSLog(@"Hi, my name is Chris! @", greeting); // prints Hi, my name is Chris! Welcome to the Flatiron School!
 ```
 
-Just as easily as we can assign a value to a variable, we can *reassing* a different value to that variable. In Objective-C, it has to be data of the same type, i.e. NSString in this case.
+Just as easily as we can assign a value to a variable, we can *reassign* a different value to that variable. In Objective-C, it has to be data of the same type, i.e. NSString in this case.
 
 ```objc
 NSString *greeting = @"Welcome to The Flatiron School!";
@@ -72,7 +72,7 @@ float change = 2.00;
 	- `nil` == 0 == `NO`
 	- Logging:
 		- `NSLog(@"isReadyBool value is %d", isReadyBool); //prints 0 or 1`
-		- `NSLog(@"isReadtBool value is %@", isReadyBool ? @"True" : @"False"); //prints True or False`
+		- `NSLog(@"isReadyBool value is %@", isReadyBool ? @"True" : @"False"); //prints True or False`
 - **id**
   - The id type is a generic type for any Objective-C object, similar to C's void pointer. Because the id type stores a *reference* to any type of object, it automatically implies that the variable is a pointer and so the `*` is not necessary.
   - `id car = [[FISCar alloc] init];`
