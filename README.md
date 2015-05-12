@@ -1,5 +1,8 @@
-#
 #Objective-C Reference Guide
+
+## Where Do I Type this?
+
+We have to type this code somewhere! Issue is, how does XCode know where to start running code? By default, iOS will run any code that is inside the `didFinishLaunchingWithOption` method in the `AppDelegate.m`. Put your code between the two curly braces. Last, sometimes output is hidden because the bottom window (the debugger window) is hidden. To show the debugger either press the keyboard shortcut command-shift-y or press the "show Debug area" button on the top right.
 
 ##Intro to Variables
 We can print a string or a number to the console using `NSLog`. Let's print a
