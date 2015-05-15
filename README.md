@@ -89,36 +89,32 @@ float change = 2.00;
 
 #### **More on Stars (*)**
 
--  `*` in the declaration of a variable means that the variable is actually just a **pointer**, as in its simply a name that *points* to the data its been assigned to. 
--  This will be seen with all objects in Objective-C, with the exception of the **id** type as being a pointer is implied. (more on that later)
--  Numbers (*with the exception of* `NSNumber`) are considered 'primitive types', and thus are not objects. For this reason, they do not need a pointer.
--  The vast majority of variables you'll create will be objects, so don't worry *too much* about stars :)
+-  `*` before a variable name denotes that it's actually just a **pointer**, as in it's simply a name that *points* to the object it's been assigned to. 
+-  Numbers (*with the exception of* `NSNumber`) are considered 'primitive types', thus they are not objects and do not need a pointer.
 
-*Fun Fact: almost all 'primitive' types are types that exist in C, the very first programming language (and what Objective-C is built on top of)*
+The vast majority of variables you'll create will be objects, so don't worry *too much* about stars :)
+
+*Fun Fact: almost all 'primitive' types are types that exist in C, one of the very first programming languages (and what Objective-C is built on top of)*
 
 ##More On Basic Data Types 
 - **NSInteger**
   - Integers; 1, 5, 500, 1000
-  - typically used as a control loop variable, i.e. `for (NSInteger count = 0; count < [array length]; count++)`
-	- `NSInteger` will determine the size of the variable based on processor architecture so you don't have to. This maintains data integrity when passing a value as an argument to or a return value from a function. **tl;dr** — use NSInteger outside of control loop variables.
-	- you may encounter code with `int`, the C version of an integer — avoid using it in your own code as it may cause errors
-	- primitive type (does not require a * when declaring them)
+  - Typically used as a control loop variable, i.e. `for (NSInteger count = 0; count < [array length]; count++)`
+	- You may encounter code with `int`, the C version of an integer — avoid using it in your own code as it may cause errors
 - **float, double, CGFloat**
 	- Rational Numbers; 1.2, 3.14, 33.3333
-	- A double has 2x the precision of a float. Float is 32-bit while double is 64-bit.
-	- `CGFloat` will determine the size of the variable based on processor architecture so you don't have to. It is the rational number version of `NSInteger`
-	- all primitive types (none of these require a * when declaring them)
+	- These are different but knowing how/why isn't important right now because it won't help that much... just use `CGFloat` for anything with decimals and `NSInteger` for anything without.
 - **BOOL**
-	- is either true or false, but written as `YES` or `NO`
-	- can also be written as `1` or `0`
-	- `nil` == 0 == `NO` (*meaning nil is considered false*)
+	- Is either true or false, but written as `YES` or `NO`
+	- Can also be written as `1` or `0`
+	- `nil == 0 == NO` (*meaning nil is considered false*)
 	- Logging:
 		- `NSLog(@"myBool value is %d", myBool); //prints 0 or 1`
-	- primitive type (does not require a * when declaring them)
+	- Primitive type (does not require a * when declaring them)
 
 - **id**
-  - The id type is a generic type for **any** Objective-C object, similar to C's void pointer. Because the id type simply stores a *reference* to any type of object, its automatically implied that the variable is a pointer, so the `*` is not necessary.
-  - `id car = [[FISCar alloc] init];`
+  - The id type is a generic type for **any** Objective-C object. It's automatically implied that the variable is a pointer, so the `*` is not necessary.
+  - Avoid creating variables with this type because it makes your code more prone to error. Only mentioned here because you will encounter it.
 
 ##Logging Variables with String Interpolation
 Woah, that sounds awfully fancy. Remember before when we NSLog'd our greeting?
