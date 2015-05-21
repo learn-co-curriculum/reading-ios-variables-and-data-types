@@ -11,14 +11,14 @@ We can print strings to the console using `NSLog`. Let's print a greeting:
 
 (*note: strings in objective-c are text surrounded by quotes and started with an @ symbol, like this:* **@"i am a string"** *)*
 
-```objective-c
+```objc
 NSLog(@"Welcome to The Flatiron School!");
 ```
 Enter that into your `didFinishLaunchingWithOptions` method and hit command+R. You should see your greeting in the console. Cool!
 
 What if we need to greet 3 people in succession as they walk through the door? Try:
 
-```objective-c
+```objc
 NSLog(@"Welcome to The Flatiron School!");
 NSLog(@"Welcome to The Flatiron School!");
 NSLog(@"Welcome to The Flatiron School!");
@@ -31,7 +31,7 @@ the computer's memory so we can easily access it whenever we want?
 We can do this by giving our string a name, also known
 as making it a **variable**.
 
-```objective-c
+```objc
 NSString *greeting = @"Welcome to The Flatiron School!";
 
 NSLog(greeting); // prints Welcome to The Flatiron School!
@@ -46,19 +46,19 @@ So we just saw how to create a string variable. Let's break down variable creati
 
 - First, lets **declare** a variable by stating its type followed by its name:
 
-	```objective-c
+	```objc
 	NSInteger count;
 	```
 
 - Once it's declared, we can subsequently **set** the variable's value.
 
-	```objective-c
+	```objc
 	NSInteger count;
 	count = 3;
 	```
 - That's cool, but we can also do it all at once on the same line!
 
-	```objective-c
+	```objc
 	NSInteger count = 3;
 	```
 *Note: You will encounter times where you'll need to simply declare a variable for later. Usually though, you'll be declaring and setting variables on the same line.*
@@ -66,7 +66,7 @@ So we just saw how to create a string variable. Let's break down variable creati
 ## Varying Variables
 Just as easily as we can assign a value to a variable, we can *re-assign* a different value to that variable. In Objective-C, **it has to be data of the same type**, i.e. NSString in this case.
 
-```objective-c
+```objc
 NSString *greeting = @"Welcome to The Flatiron School!";
 
 greeting = @"¡Hola! Bienvenidos a la Escuela de Flatiron!"; 
@@ -78,7 +78,7 @@ greeting = 5; // this results in a compiler error :(
 ```
 These examples use NSStrings, but variables can hold all kinds of different values, as we'll see in the following sections. Here are some examples of different data types being assigned to variables:
 
-```objective-c
+```objc
 int x = 1;
 NSInteger y = 2;
 NSString *name = @"Joe";
@@ -119,7 +119,7 @@ The vast majority of variables you'll create will be objects, so don't worry *to
 ##Logging Variables with String Interpolation
 Woah, that sounds awfully fancy. Remember before when we NSLog'd our greeting?
 
-```objective-c
+```objc
 NSString *greeting = @"Welcome to The Flatiron School!";
 
 NSLog(greeting); // prints Welcome to The Flatiron School!
@@ -127,7 +127,7 @@ NSLog(greeting); // prints Welcome to The Flatiron School!
 Well what if you wanted to say something else, as well your variable? 
 Using variables, we can do this:
 
-```objective-c
+```objc
 NSString *greeting = @"Welcome to The Flatiron School!";
 
 NSLog(@"Hi, my name is Chris! %@", greeting); 
@@ -139,7 +139,7 @@ This is called *string interpolation* (don't worry about remembering the term), 
 
 Once a string has format specifiers in it, put a comma and list the variables that you want to enter as they appear in the string (in order!). So let's try it out:
 
-```objective-c
+```objc
 NSString *myName = @"Tom";
 NSInteger myAge = 24;
 
