@@ -1,4 +1,11 @@
 # Objective-C Variables
+----
+
+## Objectives
+
+1. Understand the basic nature of instance variables.
+2. Learn how to declare and define an instance variable.
+3. Understand that instance variables can reference other variables.
 
 ## What is a Variable?
 
