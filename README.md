@@ -46,7 +46,7 @@ NSInteger sideB = 4;
 You can also define a variable based upon the values of other variables in your program. So to find the result of Pythagorus' Theorum, we can define the hypotenuese like this:
 
 ```objc
-NSInteger sideC = sqrt(sideA^2 + sideB^2);
+NSInteger sideC = sqrt( pow(sideA, 2) + pow(sideB, 2) );
 ```
 In our case here, if `sideA` has the value `3` and `sideB` has the value `4`, then `sideC` will result to the value `5`. We can verify this through the [special trigonometry](http://en.wikipedia.org/wiki/Special_right_triangles) of the 3:4:5 Right Triangle.
 
