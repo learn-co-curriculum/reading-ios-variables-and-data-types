@@ -1,154 +1,112 @@
-#Objective-C Variables Guide
+# Variables: Primitives & Objects
+----
 
-## Wait, Where Do I Type This?
+## Objectives
 
-We have to type this code somewhere! Issue is, how does XCode know where to start running code? By default, iOS will run any code that is inside the `didFinishLaunchingWithOptions` method in **AppDelegate.m** (you'll also often see 'FISAppDelegate.m' in labs). **Put your code between the two curly braces of this method.** 
+1. Understand the basic nature of variables.
+2. Learn how to declare and define a variable.
+3. Understand the basic distinction between objects and primitives, and the role of `*` ("star") in variable declarations.
 
-Last, sometimes output (printed in the 'console') is hidden because the bottom window (the debugger window) is hidden. To show the debugger either press the keyboard shortcut command+shift+y or press the "Show Debug Area" button on the top right. 
 
-##Intro to Variables
-We can print strings to the console using `NSLog`. Let's print a greeting:
+## What is a Variable?
 
-(*note: strings in objective-c are text surrounded by quotes and started with an @ symbol, like this:* **@"i am a string"** *)*
+In the most general sense, a **variable** is a quantity which can change in value. For those who can think back to school math class, the comparison to algebra is helpful here. Let's take a look at an equation representing simple arithmetic:
 
-```objc
-NSLog(@"Welcome to The Flatiron School!");
-```
-Enter that into your `didFinishLaunchingWithOptions` method and hit command+R. You should see your greeting in the console. Cool!
+*a* + *b* = *c*
 
-What if we need to greet 3 people in succession as they walk through the door? Try:
+The letters *a*, *b*, and *c* are variables—placeholders for some associated value. If we know the values of *a* and *b*, we can calculate the value of *c*.
 
-```objc
-NSLog(@"Welcome to The Flatiron School!");
-NSLog(@"Welcome to The Flatiron School!");
-NSLog(@"Welcome to The Flatiron School!");
-```
+## Creating a Variable
 
-That works, but we just had to type in (or copy) the same thing 3 times. What do we do when we have to greet 100
-people? Wouldn't it be nice to store our string in
-the computer's memory so we can easily access it whenever we want? 
+In programming, a **variable** is any value or set of values that a programmer assigns which can later be recalled through the variable's name. Let's start with Objective-C's integer class `NSInteger`. Creating a variable is done in two steps:
 
-We can do this by giving our string a name, also known
-as making it a **variable**.
+* **Declaring** the variable means establishing the variable's class and name, which should be unique and descriptive:
 
 ```objc
-NSString *greeting = @"Welcome to The Flatiron School!";
-
-NSLog(greeting); // prints Welcome to The Flatiron School!
-NSLog(greeting); // prints Welcome to The Flatiron School!
-NSLog(greeting); // prints Welcome to The Flatiron School!
+NSInteger a;
 ```
 
-Using variables makes working with data much easier for us. Previously, if we wanted to add to our greeting, we would have to type out a whole new NSString. Now that we've stored it in a variable, we can easily re-use it!
-
-##Creating Variables
-So we just saw how to create a string variable. Let's break down variable creation.
-
-- First, lets **declare** a variable by stating its type followed by its name:
-
-	```objc
-	NSInteger count;
-	```
-
-- Once it's declared, we can subsequently **set** the variable's value.
-
-	```objc
-	NSInteger count;
-	count = 3;
-	```
-- That's cool, but we can also do it all at once on the same line!
-
-	```objc
-	NSInteger count = 3;
-	```
-*Note: You will encounter times where you'll need to simply declare a variable for later. Usually though, you'll be declaring and setting variables on the same line.*
-
-## Varying Variables
-Just as easily as we can assign a value to a variable, we can *re-assign* a different value to that variable. In Objective-C, **it has to be data of the same type**, i.e. NSString in this case.
+* **Defining** the variable means **setting** its value, the syntax of which usually involves an `=` ("equal sign"):
 
 ```objc
-NSString *greeting = @"Welcome to The Flatiron School!";
-
-greeting = @"¡Hola! Bienvenidos a la Escuela de Flatiron!"; 
-// greeting is now equal to the Spanish greeting :D
-
-greeting = 5; // this results in a compiler error :(
-// "Implicit conversion of 'int' to 'NSString *' is disallowed." 
-// This means 'greeting' must be an NSString, so 5 (int) won't work.
+a = 1;
 ```
-These examples use NSStrings, but variables can hold all kinds of different values, as we'll see in the following sections. Here are some examples of different data types being assigned to variables:
+
+These two steps are almost always combined into a single statement which can look like this:
 
 ```objc
-int x = 1;
-NSInteger y = 2;
-NSString *name = @"Joe";
-BOOL isProgramming = YES;
-CGFloat price = 4.50;
-float change = 2.00;
+NSInteger b = 2;
 ```
+**Note:** *You will occasionally encounter situations in which you'll need to declare a variable and wait to define it until later, but usually you'll be declaring and setting variables on the same line.*
 
-#### **More on Stars (*)**
-
--  `*` before a variable name denotes that it's actually just a **pointer**, as in it's simply a name that *points* to the object it's been assigned to. 
--  Numbers (*with the exception of* `NSNumber`) are considered 'primitive types', thus they are not objects and do not need a pointer.
-
-The vast majority of variables you'll create will be objects, so don't worry *too much* about stars :)
-
-*Fun Fact: almost all 'primitive' types are types that exist in C, one of the very first programming languages (and what Objective-C is built on top of)*
-
-##More On Basic Data Types 
-- **NSInteger**
-  - Integers; 1, 5, 500, 1000
-  - Typically used as a control loop variable, i.e. `for (NSInteger count = 0; count < [array length]; count++)`
-	- You may encounter code with `int`, the C version of an integer — avoid using it in your own code as it may cause errors
-- **float, double, CGFloat**
-	- Rational Numbers; 1.2, 3.14, 33.3333
-	- These are different but knowing how/why isn't important right now because it won't help that much... just use `CGFloat` for anything with decimals and `NSInteger` for anything without.
-- **BOOL**
-	- Is either true or false, but written as `YES` or `NO`
-	- Can also be written as `1` or `0`
-	- `nil == 0 == NO` (*meaning nil is considered false*)
-	- Logging:
-		- `NSLog(@"myBool value is %d", myBool); //prints 0 or 1`
-	- Primitive type (does not require a * when declaring them)
-
-- **id**
-  - The id type is a generic type for **any** Objective-C object. It's automatically implied that the variable is a pointer, so the `*` is not necessary.
-  - Avoid creating variables with this type because it makes your code more prone to error. Only mentioned here because you will encounter it.
-
-##Logging Variables with String Interpolation
-Woah, that sounds awfully fancy. Remember before when we NSLog'd our greeting?
+You can also define a variable based upon the values of other variables in your program. So to find the value of *c* having already defined `a` and `b`, we can create another variable called `c` and define it as the result of adding `a` and `b` together;
 
 ```objc
-NSString *greeting = @"Welcome to The Flatiron School!";
-
-NSLog(greeting); // prints Welcome to The Flatiron School!
+NSInteger c = a + b;
 ```
-Well what if you wanted to say something else, as well your variable? 
-Using variables, we can do this:
+In the current case, `c` will be set to the value of `3`. However, if were to change either `a` or `b`, their new sum would be captured into `c`:
 
 ```objc
-NSString *greeting = @"Welcome to The Flatiron School!";
+NSInteger a = 2;
+NSInteger b = 4;
 
-NSLog(@"Hi, my name is Chris! %@", greeting); 
-// prints Hi, my name is Chris! Welcome to the Flatiron School!
+NSInteger c = a + b;
 ```
-This is called *string interpolation* (don't worry about remembering the term), and what it means is that we can write an ordinary string and enter variables into it using *format specifiers*. 
+The variable `c` will now represent the value `6`.
 
-**Format specifiers are simply placeholders.** They always start with a % and have a single character depending on what type of variable is being passed in. The format specifier we use for strings is `%@`, as shown in the example. 
-
-Once a string has format specifiers in it, put a comma and list the variables that you want to enter as they appear in the string (in order!). So let's try it out:
+## Varying a Variable
+Just as easily as we can assign a value to a variable name, we can *re-assign* a different value to that variable name. In Objective-C **it has to be a value of the same type**. In our case, this means keeping with `NSInteger`.
 
 ```objc
-NSString *myName = @"Tom";
-NSInteger myAge = 24;
+NSInteger a = 1;
+NSInteger b = 2;
 
-NSLog(@"My name is %@ and I am %ld years old.", myName, myAge);
-// prints "My name is Tom and I am 24 years old." 
+NSInteger c = a + b;
+
+a = 2;
+b = 4;
 ```
-Here we see the `%@` gets replaced with `myName`, and the `%ld` gets replaced with `myAge`. 
+You'll notice that we don't write `NSInteger` again after the variable has been declared. This is called "redefining" a variable. It's important to note, however, that `c` will not automatically update itself to reflect the new values of `a` and `b`; unless `c` is directly redefined, its value will remain at `3`.
 
-Documentation on format specifiers [lives here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html). You can take a look, but **don't worry about memorizing them** — the important part is that you're aware of how these placeholders work. Plus, XCode has built-in features to help with these, and you'll start to remember after you use them enough times. :)
+A useful nature of redefitions is that a variable can be used in its own redifinition:
 
----
-This may be a lot to take in all at once, but the best part is **now you have everything you need to know to start using variables in Objective-C!**
+```objc
+NSInteger a = 1;
+
+a = a + 1;
+```
+Now `a` will hold the value `2`.
+
+```objc
+a = a * a;
+```
+And now it will hold the value `4`.
+
+## Primitives vs. Objects
+
+Variables can be of many types: strings, arrays, numbers, dictionaries, and many more. The types of variables which refer only to a value (such as `NSInteger`) are referred to as "**primitives**". This is because, unlike the other variable types called "**objects**", primitives are unable to perform behaviors on the values that they reference. Subsequently, an object is a variable which can refer to one or many values that it can itself perform actions upon (these actions are called "**methods**"). 
+
+A string is a type of object which is used to store and manipulate text. In Objective-C, the base string class is `NSString`. We can create a string variable in much the same way as creating an integer variable.
+
+```objc
+NSString *welcome = @"Welcome to the Flatiron School!";
+```
+You will notice, however, that unlike declaring our `NSInteger` variables earlier, declaring our `welcome` string requires a `*` ("star") between the class name and the variable name. This is Objective-C's syntax for creating an object.
+
+**Advanced:** *The use of a* `*` *generates a pointer reference. Instead of pointing to a memory location which holds a value, a pointer reference is a location in memory which holds the memory address of another variable's value, or the addresses of a set of other variables' values. [Further Reading](http://www.drdobbs.com/mobile/pointers-in-objective-c/225700236)*
+
+We'll cover in detail the distinction between objects and primitives in a later topic on Object-Oriented-Programming. For now, just recognize that objects hold values and can change them through behaviors called "methods", while primitives just hold a value.
+
+This is because `NSString` is an object type (we'll cover in depth what this means in the next topic). Objects require a pointer reference (the `*`) in their declaration because, well, they point to a set of values at a specific memory address in the computer's RAM. However, `NSInteger` is a primitive, or "data type", and is itself a value, rather than a pointer to a value or set of values.
+
+**Note:** *Entering* `NSInteger *` *will cause the compiler to generate an* `invalid integer to pointer conversion` *warning. The same goes for declaring any of the data types. This syntax does serve a purpose so the language permits it, but your application won't do what you expect.*
+
+While you can reference the complete list of [Foundation Data Types](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_DataTypes/index.html#//apple_ref/doc/c_ref/NSTimeInterval) here, the primitives with which you'll interact the most are:
+
+```objc
+NSInteger
+NSUInteger
+CGFloat
+BOOL
+```
+Most other variables you create will be objects. The next reading will discuss string objects and string formatting in more detail.
