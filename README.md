@@ -10,17 +10,11 @@
 
 ## What is a Variable?
 
-In the most general sense, a **variable** is a quantity which can change in value. For those who can think back to school math class, the comparison to algebra and geometry is helpful here. Let's take a look at the equation for the Pythagorean Theorum:
+In the most general sense, a **variable** is a quantity which can change in value. For those who can think back to school math class, the comparison to algebra is helpful here. Let's take a look at an equation representing simple arithmetic:
 
-*a*<sup>2</sup> + *b*<sup>2</sup> = *c*<sup>2</sup>
+*a* + *b* = *c*
 
-OR
-
-*c* = √(*a*<sup>2</sup> + *b*<sup>2</sup>)
-
-The equation itself is unintelligible without understanding what it represents: *The sum of the squares of the lengths of the two shorter sides of any right triangle is equal to the square of the length of the hypotenuese (the longest side of the triangle).*
-
-The letters *a*, *b*, and *c* are variables which represent the values of the lengths of the sides of the right triangle. Understanding the context of this equation, we can set the known variables so we can calculate the value of the unknown one.
+The letters *a*, *b*, and *c* are variables—placeholders for some associated value. If we know the values of *a* and *b*, we can calculate the value of *c*.
 
 ## Creating a Variable
 
@@ -29,51 +23,77 @@ In programming, a **variable** is any value or set of values that a programmer a
 * **Declaring** the variable means establishing the variable's class and name, which should be unique and descriptive:
 
 ```objc
-NSInteger sideA;
+NSInteger a;
 ```
 
 * **Defining** the variable means **setting** its value, the syntax of which usually involves an `=` ("equal sign"):
 
 ```objc
-sideA = 3;
+a = 1;
 ```
 
-These two steps can be combined into a single statement which can look like this:
+These two steps are almost always combined into a single statement which can look like this:
 
 ```objc
-NSInteger sideB = 4;
+NSInteger b = 2;
 ```
-You can also define a variable based upon the values of other variables in your program. So to find the result of Pythagorus' Theorum, we can define the hypotenuese like this:
-
-```objc
-NSInteger sideC = sqrt( pow(sideA, 2) + pow(sideB, 2) );
-```
-In our case here, if `sideA` has the value `3` and `sideB` has the value `4`, then `sideC` will result to the value `5`. We can verify this through the [special trigonometry](http://en.wikipedia.org/wiki/Special_right_triangles) of the 3:4:5 Right Triangle.
-
 **Note:** *You will occasionally encounter situations in which you'll need to declare a variable and wait to define it until later, but usually you'll be declaring and setting variables on the same line.*
+
+You can also define a variable based upon the values of other variables in your program. So to find the value of *c* having already defined `a` and `b`, we can create another variable called `c` and define it as the result of adding `a` and `b` together;
+
+```objc
+NSInteger c = a + b;
+```
+In the current case, `c` will be set to the value of `3`. However, if were to change either `a` or `b`, their new sum would be captured into `c`:
+
+```objc
+NSInteger a = 2;
+NSInteger b = 4;
+
+NSInteger c = a + b;
+```
+The variable `c` will now represent the value `6`.
 
 ## Varying a Variable
 Just as easily as we can assign a value to a variable name, we can *re-assign* a different value to that variable name. In Objective-C **it has to be a value of the same type**. In our case, this means keeping with `NSInteger`.
 
 ```objc
-sideA = 5;
-sideB = 12;
-```
+NSInteger a = 1;
+NSInteger b = 2;
 
-Because we set `sideC` to the equation by referencing `sideA` and `sideB`, and because 5:12:13 is another Pythagorean Triple, `sideC` will now result to the value `13`.
+NSInteger c = a + b;
+
+a = 2;
+b = 4;
+```
+You'll notice that we don't write `NSInteger` again after the variable has been declared. This is called "redefining" a variable. It's important to note, however, that `c` will not automatically update itself to reflect the new values of `a` and `b`; unless `c` is directly redefined, its value will remain at `3`.
+
+A useful nature of redefitions is that a variable can be used in its own redifinition:
+
+```objc
+NSInteger a = 1;
+
+a = a + 1;
+```
+Now `a` will hold the value `2`.
+
+```objc
+a = a * a;
+```
+And now it will hold the value `4`.
 
 ## Primitives vs. Objects
 
-Variables can be of many types: strings, arrays, numbers, dictionaries, and many more. The types of variables which refer only to a value are referred to as "**primitives**". This is because, unlike objects, primitives are unable to perform behaviors on the values that they reference. Subsequently, an object is a variable which can refer to one or many values that it can itself perform actions upon (these actions are called "**methods**").
+Variables can be of many types: strings, arrays, numbers, dictionaries, and many more. The types of variables which refer only to a value (such as `NSInteger`) are referred to as "**primitives**". This is because, unlike the other variable types called "**objects**", primitives are unable to perform behaviors on the values that they reference. Subsequently, an object is a variable which can refer to one or many values that it can itself perform actions upon (these actions are called "**methods**"). 
 
 A string is a type of object which is used to store and manipulate text. In Objective-C, the base string class is `NSString`. We can create a string variable in much the same way as creating an integer variable.
 
 ```objc
 NSString *welcome = @"Welcome to the Flatiron School!";
 ```
-You will notice, however, that unlike declaring our `NSInteger` variables earlier, declaring our `welcome` string requires a `*` ("star") between the class name and the variable name. This is Objective-C's syntax for creating a pointer reference.
+You will notice, however, that unlike declaring our `NSInteger` variables earlier, declaring our `welcome` string requires a `*` ("star") between the class name and the variable name. This is Objective-C's syntax for creating an object.
 
-**Advanced:** *Instead of pointing to a memory location which holds a value, a pointer reference is a location in memory which holds the memory  address of another variable's value, or the addresses of a set of other variable's values. [Further Reading](http://www.drdobbs.com/mobile/pointers-in-objective-c/225700236)*
+**Advanced:** *The use of a* `*` *generates a pointer reference. Instead of pointing to a memory location which holds a value, a pointer reference is a location in memory which holds the memory address of another variable's value, or the addresses of a set of other variables' values. [Further Reading](http://www.drdobbs.com/mobile/pointers-in-objective-c/225700236)*
 
 We'll cover in detail the distinction between objects and primitives in a later topic on Object-Oriented-Programming. For now, just recognize that objects hold values and can change them through behaviors called "methods", while primitives just hold a value.
 
