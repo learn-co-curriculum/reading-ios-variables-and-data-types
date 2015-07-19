@@ -3,9 +3,9 @@
 
 ## Objectives
 
-1. Understand the basic nature of variables.
-2. Learn how to declare and define a variable.
-3. Understand the basic distinction between objects and primitives, and the role of `*` ("star") in variable declarations.
+1. Connect the basic nature of variables in programming to variables in algebra.
+2. Declare and define a variable.
+3. Recognize the basic distinction between objects and primitives, and the role of `*` ("star") in variable declarations.
 
 
 ## What is a Variable?
@@ -68,7 +68,7 @@ b = 4;
 ```
 You'll notice that we don't write `NSInteger` again after the variable has been declared. This is called "redefining" a variable. It's important to note, however, that `c` will not automatically update itself to reflect the new values of `a` and `b`; unless `c` is directly redefined, its value will remain at `3`.
 
-A useful nature of redefitions is that a variable can be used in its own redifinition:
+A useful nature of redefinitions is that a variable can be used in its own redefinition:
 
 ```objc
 NSInteger a = 1;
