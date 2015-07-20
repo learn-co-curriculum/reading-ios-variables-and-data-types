@@ -5,7 +5,7 @@
 
 1. Connect the basic nature of variables in programming to variables in algebra.
 2. Declare and define a variable.
-3. Redefine an existing variable, and redefinite it using itself.
+3. Redefine an existing variable, and redefine it using itself.
 4. Recognize the basic distinction between objects and primitives, and the role of `*` ("star") in variable declarations.
 
 
