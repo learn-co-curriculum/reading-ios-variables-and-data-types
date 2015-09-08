@@ -1,5 +1,4 @@
 # Variables: Primitives & Objects
-----
 
 ## Objectives
 
@@ -87,18 +86,21 @@ And now it will hold the value `4`.
 
 Variables can be of many types: strings, arrays, numbers, dictionaries, and many more. The types of variables which refer only to a value (such as `NSInteger`) are referred to as "**primitives**". This is because, unlike the other variable types called "**objects**", primitives are unable to perform behaviors on the values that they reference. Subsequently, an object is a variable which can refer to one or many values that it can itself perform actions upon (these actions are called "**methods**"). 
 
-A string is a type of object which is used to store and manipulate text. In Objective-C, the base string class is `NSString`. We can create a string variable in much the same way as creating an integer variable.
+A string is a type of object which is used to store and manipulate text. While the string literal can be used in conjunction with `NSLog()` to print directly to the console:
+
+```obj
+NSLog(@"%@", @"Welcome to the Flatiron School!");
+```
+This will print: `Welcome to the Flatiron School!`.
+
+In Objective-C, we can also capture a string value into a variable that is of the `NSString` type. This is because the string literal that we've been using implicitly creates values of the `NSString` type. We can create a string *variable* in much the same way as creating an integer variable, however, since strings are *objects*, their declaration syntax requires a `*` ("star") between the type name and the variable name:
 
 ```objc
 NSString *welcome = @"Welcome to the Flatiron School!";
 ```
-You will notice, however, that unlike declaring our `NSInteger` variables earlier, declaring our `welcome` string requires a `*` ("star") between the class name and the variable name. This is Objective-C's syntax for creating an object.
-
 **Advanced:** *The use of a* `*` *generates a pointer reference. Instead of pointing to a memory location which holds a value, a pointer reference is a location in memory which holds the memory address of another variable's value, or the addresses of a set of other variables' values. [Further Reading](http://www.drdobbs.com/mobile/pointers-in-objective-c/225700236)*
 
-We'll cover in detail the distinction between objects and primitives in a later topic on Object-Oriented-Programming. For now, just recognize that objects hold values and can change them through behaviors called "methods", while primitives just hold a value.
-
-This is because `NSString` is an object type (we'll cover in depth what this means in the next topic). Objects require a pointer reference (the `*`) in their declaration because, well, they point to a set of values at a specific memory address in the computer's RAM. However, `NSInteger` is a primitive, or "data type", and is itself a value, rather than a pointer to a value or set of values.
+We'll cover in detail the distinction between objects and primitives in a later topic on Object-Oriented-Programming. For now, just recognize that objects hold values and can change them through behaviors called "methods", while primitives just hold a value. Because of this, primitives **do not** employ the `*` in the their declaration syntax.
 
 **Note:** *Entering* `NSInteger *` *will cause the compiler to generate an* `invalid integer to pointer conversion` *warning. The same goes for declaring any of the data types. This syntax does serve a purpose so the language permits it, but your application won't do what you expect.*
 
@@ -110,4 +112,63 @@ NSUInteger
 CGFloat
 BOOL
 ```
-Most other variables you create will be objects. The next reading will discuss string objects and string formatting in more detail.
+Most other variables you create will be objects.
+
+## Code Commenting
+
+Comments are text that the compiler is told to ignore. They're useful for inserting notes to yourself or to other programmers about the code. There a couple of different syntaxes that you might see:
+
+```objc
+// A line comment is declared with two slashes and comments out
+// all the text to the right of the slashes.
+```
+
+```objc
+/*
+A block comment will comment-out all the text between 
+its opening and closing symbols. They use a slash and star 
+to open, and a star and slash to close.
+*/
+```
+
+Commenting has its usefulness but in general should be treated as a last resort. Learn to keep your commenting to a minimum and use the code itself to document your intent.
+
+### Choose Descriptive Variable Names Instead
+
+Don't rely on comments to document how a variable is meant to be used; use the variable name itself! 
+
+```objc
+// avoid shorthand variable names with comment explanations
+
+NSInteger w = 12; // 12 weeks in the course
+NSInteger d = w * 5; // days in the course is week times 5
+```
+
+You can rely on Xcode's autocomplete tool to fill in the bulk of variable names once you've declared them, so don't be afraid of being somewhat verbose:
+
+```objc
+// use descriptive variable names
+
+NSInteger weeksInCourse = 12;
+NSInteger daysInCourse = weeksInCourse * 5; // five days in a course week
+```
+#### Avoid "Magic Numbers"
+
+While we chose good names for the variables above, there's still a small problem with the code snippet: the "magic number" `5`. "Magic numbers" are values in the code that have no reference to their origin. We have to rely on the comment to understand what value this represents—if there even is a comment. It's best to save this value into a variable and use the variable name to document the nature of the value that it holds:
+
+```objc
+// use a variable to document a "magic number"
+
+NSInteger weeksInCourse = 12;
+NSInteger daysPerWeekInCourse = 5;
+NSInteger daysInCourse = weeksInCourse * daysPerWeekInCourse;
+```
+Now we can read the code itself and know what the values mean. Then, if we have another use for these variables but different values, such as when describing a weekend course, we can change the values instead of the "magic numbers":
+
+```objc
+// changing variables' values documents itself
+
+NSInteger weeksInCourse = 4;
+NSInteger daysPerWeekInCourse = 2;
+NSInteger daysInCourse = weeksInCourse * daysPerWeekInCourse;
+```
