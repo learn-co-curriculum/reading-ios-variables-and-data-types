@@ -86,7 +86,7 @@ And now it will hold the value `4`.
 
 Variables can be of many types: strings, arrays, numbers, dictionaries, and many more. The types of variables which refer only to a value (such as `NSInteger`) are referred to as "**primitives**". This is because, unlike the other variable types called "**objects**", primitives are unable to perform behaviors on the values that they reference. Subsequently, an object is a variable which can refer to one or many values that it can itself perform actions upon (these actions are called "**methods**"). 
 
-A string is a type of object which is used to store and manipulate text. While the string literal can be used in conjunction with `NSLog()` to print directly to the console:
+A string is a type of object which is used to store and manipulate text. We've already seen that the string literal can be used in conjunction with `NSLog()` to print directly to the console:
 
 ```obj
 NSLog(@"%@", @"Welcome to the Flatiron School!");
@@ -102,7 +102,7 @@ NSString *welcome = @"Welcome to the Flatiron School!";
 
 We'll cover in detail the distinction between objects and primitives in a later topic on Object-Oriented-Programming. For now, just recognize that objects hold values and can change them through behaviors called "methods", while primitives just hold a value. Because of this, primitives **do not** employ the `*` in the their declaration syntax.
 
-**Note:** *Entering* `NSInteger *` *will cause the compiler to generate an* `invalid integer to pointer conversion` *warning. The same goes for declaring any of the data types. This syntax does serve a purpose so the language permits it, but your application won't do what you expect.*
+**Note:** *Assigning an integer to a variable of type* `NSInteger *` *will cause the compiler to generate an* `Incompatible integer to pointer conversion` *warning. The same goes for declaring any of the data types. This syntax does serve a purpose so the language permits it, but your application won't do what you expect.*
 
 While you can reference the complete list of [Foundation Data Types](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_DataTypes/index.html#//apple_ref/doc/c_ref/NSTimeInterval) here, the primitives with which you'll interact the most are:
 
@@ -131,7 +131,7 @@ to open, and a star and slash to close.
 */
 ```
 
-Commenting has its usefulness but in general should be treated as a last resort. Learn to keep your commenting to a minimum and use the code itself to document your intent.
+Commenting is useful for documenting behavior that isn't immediately obvious, but it is not a substitute for well-written code. Learn to keep your commenting to a minimum and use the code itself to document your intent.
 
 ### Choose Descriptive Variable Names Instead
 
@@ -141,7 +141,7 @@ Don't rely on comments to document how a variable is meant to be used; use the v
 // avoid shorthand variable names with comment explanations
 
 NSInteger w = 12; // 12 weeks in the course
-NSInteger d = w * 5; // days in the course is week times 5
+NSInteger d = w * 5; // days in the course is weeks times 5
 ```
 
 You can rely on Xcode's autocomplete tool to fill in the bulk of variable names once you've declared them, so don't be afraid of being somewhat verbose:
@@ -154,7 +154,7 @@ NSInteger daysInCourse = weeksInCourse * 5; // five days in a course week
 ```
 #### Avoid "Magic Numbers"
 
-While we chose good names for the variables above, there's still a small problem with the code snippet: the "magic number" `5`. "Magic numbers" are values in the code that have no reference to their origin. We have to rely on the comment to understand what value this represents—if there even is a comment. It's best to save this value into a variable and use the variable name to document the nature of the value that it holds:
+While we chose good names for the variables above, there's still a small problem with that code snippet: the "magic number" `5`. "Magic numbers" are values in the code that have no reference to their origin or intent; we have to rely on the comment to understand what value this represents—if there even is a comment. It's best to save this value into a variable and use the variable name to document the nature of the value that it holds:
 
 ```objc
 // use a variable to document a "magic number"
@@ -163,7 +163,7 @@ NSInteger weeksInCourse = 12;
 NSInteger daysPerWeekInCourse = 5;
 NSInteger daysInCourse = weeksInCourse * daysPerWeekInCourse;
 ```
-Now we can read the code itself and know what the values mean. Then, if we have another use for these variables but different values, such as when describing a weekend course, we can change the values instead of the "magic numbers":
+Now we can read the code itself and know what the values mean. Then, if we have another use for these variables but need to change the values, such as when describing a weekend course, we can change the values instead of the "magic numbers":
 
 ```objc
 // changing variables' values documents itself
