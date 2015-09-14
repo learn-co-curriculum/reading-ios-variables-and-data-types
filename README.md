@@ -88,7 +88,7 @@ Variables can be of many types: strings, arrays, numbers, dictionaries, and many
 
 A string is a type of object which is used to store and manipulate text. We've already seen that the string literal can be used in conjunction with `NSLog()` to print directly to the console:
 
-```obj
+```objc
 NSLog(@"%@", @"Welcome to the Flatiron School!");
 ```
 This will print: `Welcome to the Flatiron School!`.
