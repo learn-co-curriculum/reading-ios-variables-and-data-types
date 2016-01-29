@@ -173,4 +173,4 @@ NSInteger daysPerWeekInCourse = 2;
 NSInteger daysInCourse = weeksInCourse * daysPerWeekInCourse;
 ```
 
-<a href='https://learn.co/lessons/reading-ios-variables-and-data-types' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/reading-ios-variables-and-data-types' title='Variables: Primitives & Objects'>Variables: Primitives & Objects</a> on Learn.co and start learning to code for free.</p>
